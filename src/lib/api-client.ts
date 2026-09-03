@@ -259,11 +259,6 @@ class ApiClient {
     return response.data;
   }
 
-  async getVehicleStats(filters?: any) {
-    const response = await this.client.get('/vehicles/stats', { params: filters });
-    return response.data.data;
-  }
-
   async bulkDeleteVehicles(ids: string[]) {
     const response = await this.client.post('/vehicles/bulk/delete', { ids });
     return response.data;

@@ -18,6 +18,7 @@ import { Route as PhonecallsRouteImport } from './routes/phonecalls'
 import { Route as RolesRouteImport } from './routes/roles'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SettingsApiRouteImport } from './routes/settings-api'
+import { Route as SystemRouteImport } from './routes/system'
 import { Route as VehiclesRouteImport } from './routes/vehicles'
 import { Route as AppointmentsIndexRouteImport } from './routes/appointments/index'
 import { Route as AppointmentsAppointmentIdRouteImport } from './routes/appointments/$appointmentId'
@@ -28,6 +29,7 @@ import { Route as KnowledgeIndexRouteImport } from './routes/knowledge/index'
 import { Route as KnowledgeCategoryIdRouteImport } from './routes/knowledge/$categoryId'
 import { Route as PhonecallsCallIdRouteImport } from './routes/phonecalls.$callId'
 import { Route as SalesIndexRouteImport } from './routes/sales/index'
+import { Route as SalesLeadIdRouteImport } from './routes/sales/$leadId'
 import { Route as SalesCreateRouteImport } from './routes/sales/create'
 import { Route as SettingsBranchesRouteImport } from './routes/settings/branches'
 import { Route as SettingsCompaniesRouteImport } from './routes/settings/companies'
@@ -41,7 +43,6 @@ import { Route as SettingsStationsRouteImport } from './routes/settings/stations
 import { Route as SettingsUsersRouteImport } from './routes/settings/users'
 import { Route as SettingsWarrantyPackagesRouteImport } from './routes/settings/warranty-packages'
 import { Route as VehiclesVehicleIdRouteImport } from './routes/vehicles.$vehicleId'
-import { Route as SystemRouteImport } from './routes/system'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -88,14 +89,14 @@ const SettingsApiRoute = SettingsApiRouteImport.update({
   path: '/settings-api',
   getParentRoute: () => rootRouteImport,
 } as any)
-const VehiclesRoute = VehiclesRouteImport.update({
-  id: '/vehicles',
-  path: '/vehicles',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SystemRoute = SystemRouteImport.update({
   id: '/system',
   path: '/system',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VehiclesRoute = VehiclesRouteImport.update({
+  id: '/vehicles',
+  path: '/vehicles',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppointmentsIndexRoute = AppointmentsIndexRouteImport.update({
@@ -142,6 +143,11 @@ const PhonecallsCallIdRoute = PhonecallsCallIdRouteImport.update({
 const SalesIndexRoute = SalesIndexRouteImport.update({
   id: '/sales/',
   path: '/sales/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalesLeadIdRoute = SalesLeadIdRouteImport.update({
+  id: '/sales/$leadId',
+  path: '/sales/$leadId',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SalesCreateRoute = SalesCreateRouteImport.update({
@@ -221,14 +227,15 @@ export interface FileRoutesByFullPath {
   '/roles': typeof RolesRoute
   '/settings': typeof SettingsRouteWithChildren
   '/settings-api': typeof SettingsApiRoute
-  '/vehicles': typeof VehiclesRouteWithChildren
   '/system': typeof SystemRoute
+  '/vehicles': typeof VehiclesRouteWithChildren
   '/appointments/$appointmentId': typeof AppointmentsAppointmentIdRoute
   '/appointments/create': typeof AppointmentsCreateRoute
   '/contacts/$contactId': typeof ContactsContactIdRoute
   '/helpdesk/$ticketId': typeof HelpdeskTicketIdRoute
   '/knowledge/$categoryId': typeof KnowledgeCategoryIdRoute
   '/phonecalls/$callId': typeof PhonecallsCallIdRoute
+  '/sales/$leadId': typeof SalesLeadIdRoute
   '/sales/create': typeof SalesCreateRoute
   '/settings/branches': typeof SettingsBranchesRoute
   '/settings/companies': typeof SettingsCompaniesRoute
@@ -256,6 +263,7 @@ export interface FileRoutesByTo {
   '/roles': typeof RolesRoute
   '/settings': typeof SettingsRouteWithChildren
   '/settings-api': typeof SettingsApiRoute
+  '/system': typeof SystemRoute
   '/vehicles': typeof VehiclesRouteWithChildren
   '/appointments/$appointmentId': typeof AppointmentsAppointmentIdRoute
   '/appointments/create': typeof AppointmentsCreateRoute
@@ -263,6 +271,7 @@ export interface FileRoutesByTo {
   '/helpdesk/$ticketId': typeof HelpdeskTicketIdRoute
   '/knowledge/$categoryId': typeof KnowledgeCategoryIdRoute
   '/phonecalls/$callId': typeof PhonecallsCallIdRoute
+  '/sales/$leadId': typeof SalesLeadIdRoute
   '/sales/create': typeof SalesCreateRoute
   '/settings/branches': typeof SettingsBranchesRoute
   '/settings/companies': typeof SettingsCompaniesRoute
@@ -291,6 +300,7 @@ export interface FileRoutesById {
   '/roles': typeof RolesRoute
   '/settings': typeof SettingsRouteWithChildren
   '/settings-api': typeof SettingsApiRoute
+  '/system': typeof SystemRoute
   '/vehicles': typeof VehiclesRouteWithChildren
   '/appointments/$appointmentId': typeof AppointmentsAppointmentIdRoute
   '/appointments/create': typeof AppointmentsCreateRoute
@@ -298,6 +308,7 @@ export interface FileRoutesById {
   '/helpdesk/$ticketId': typeof HelpdeskTicketIdRoute
   '/knowledge/$categoryId': typeof KnowledgeCategoryIdRoute
   '/phonecalls/$callId': typeof PhonecallsCallIdRoute
+  '/sales/$leadId': typeof SalesLeadIdRoute
   '/sales/create': typeof SalesCreateRoute
   '/settings/branches': typeof SettingsBranchesRoute
   '/settings/companies': typeof SettingsCompaniesRoute
@@ -327,6 +338,7 @@ export interface FileRouteTypes {
     | '/roles'
     | '/settings'
     | '/settings-api'
+    | '/system'
     | '/vehicles'
     | '/appointments/$appointmentId'
     | '/appointments/create'
@@ -334,6 +346,7 @@ export interface FileRouteTypes {
     | '/helpdesk/$ticketId'
     | '/knowledge/$categoryId'
     | '/phonecalls/$callId'
+    | '/sales/$leadId'
     | '/sales/create'
     | '/settings/branches'
     | '/settings/companies'
@@ -361,6 +374,7 @@ export interface FileRouteTypes {
     | '/roles'
     | '/settings'
     | '/settings-api'
+    | '/system'
     | '/vehicles'
     | '/appointments/$appointmentId'
     | '/appointments/create'
@@ -368,6 +382,7 @@ export interface FileRouteTypes {
     | '/helpdesk/$ticketId'
     | '/knowledge/$categoryId'
     | '/phonecalls/$callId'
+    | '/sales/$leadId'
     | '/sales/create'
     | '/settings/branches'
     | '/settings/companies'
@@ -395,6 +410,7 @@ export interface FileRouteTypes {
     | '/roles'
     | '/settings'
     | '/settings-api'
+    | '/system'
     | '/vehicles'
     | '/appointments/$appointmentId'
     | '/appointments/create'
@@ -402,6 +418,7 @@ export interface FileRouteTypes {
     | '/helpdesk/$ticketId'
     | '/knowledge/$categoryId'
     | '/phonecalls/$callId'
+    | '/sales/$leadId'
     | '/sales/create'
     | '/settings/branches'
     | '/settings/companies'
@@ -430,11 +447,12 @@ export interface RootRouteChildren {
   RolesRoute: typeof RolesRoute
   SettingsRoute: typeof SettingsRouteWithChildren
   SettingsApiRoute: typeof SettingsApiRoute
-  VehiclesRoute: typeof VehiclesRouteWithChildren
   SystemRoute: typeof SystemRoute
+  VehiclesRoute: typeof VehiclesRouteWithChildren
   AppointmentsAppointmentIdRoute: typeof AppointmentsAppointmentIdRoute
   AppointmentsCreateRoute: typeof AppointmentsCreateRoute
   KnowledgeCategoryIdRoute: typeof KnowledgeCategoryIdRoute
+  SalesLeadIdRoute: typeof SalesLeadIdRoute
   SalesCreateRoute: typeof SalesCreateRoute
   AppointmentsIndexRoute: typeof AppointmentsIndexRoute
   KnowledgeIndexRoute: typeof KnowledgeIndexRoute
@@ -478,13 +496,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/system': {
-      id: '/system'
-      path: '/system'
-      fullPath: '/system'
-      preLoaderRoute: typeof SystemRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/phonecalls': {
       id: '/phonecalls'
       path: '/phonecalls'
@@ -511,6 +522,13 @@ declare module '@tanstack/react-router' {
       path: '/settings-api'
       fullPath: '/settings-api'
       preLoaderRoute: typeof SettingsApiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/system': {
+      id: '/system'
+      path: '/system'
+      fullPath: '/system'
+      preLoaderRoute: typeof SystemRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/vehicles': {
@@ -581,6 +599,13 @@ declare module '@tanstack/react-router' {
       path: '/sales'
       fullPath: '/sales/'
       preLoaderRoute: typeof SalesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sales/$leadId': {
+      id: '/sales/$leadId'
+      path: '/sales/$leadId'
+      fullPath: '/sales/$leadId'
+      preLoaderRoute: typeof SalesLeadIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sales/create': {
@@ -767,11 +792,12 @@ const rootRouteChildren: RootRouteChildren = {
   RolesRoute: RolesRoute,
   SettingsRoute: SettingsRouteWithChildren,
   SettingsApiRoute: SettingsApiRoute,
-  VehiclesRoute: VehiclesRouteWithChildren,
   SystemRoute: SystemRoute,
+  VehiclesRoute: VehiclesRouteWithChildren,
   AppointmentsAppointmentIdRoute: AppointmentsAppointmentIdRoute,
   AppointmentsCreateRoute: AppointmentsCreateRoute,
   KnowledgeCategoryIdRoute: KnowledgeCategoryIdRoute,
+  SalesLeadIdRoute: SalesLeadIdRoute,
   SalesCreateRoute: SalesCreateRoute,
   AppointmentsIndexRoute: AppointmentsIndexRoute,
   KnowledgeIndexRoute: KnowledgeIndexRoute,
